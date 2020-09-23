@@ -1,4 +1,4 @@
-package co.mercadolibre.pages;
+package co.mercadolibre.pages.objects;
 
 import co.mercadolibre.framework.BasePage;
 import org.openqa.selenium.WebDriver;

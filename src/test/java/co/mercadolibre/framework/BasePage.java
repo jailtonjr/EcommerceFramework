@@ -10,16 +10,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-    private static final int TIMEOUT = 5;
-    private static final long SECONDS = 15;
-
+    private static ConfigFileReader configFileReader = new ConfigFileReader();
     protected WebDriver driver;
     private WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, SECONDS);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
+        this.wait = new WebDriverWait(driver, configFileReader.getSeconds());
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, configFileReader.getTimeout()), this);
     }
 
     protected void waitForElementToAppear(WebElement locator) {
@@ -32,5 +30,9 @@ public class BasePage {
 
     protected void waitForTextToDisappear(By locator, String text) {
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, text)));
+    }
+
+    public void openPage(String url) {
+        driver.get(url);
     }
 }

@@ -1,10 +1,13 @@
-package co.mercadolibre.pages;
+package co.mercadolibre.pages.objects;
 
 import co.mercadolibre.framework.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class ProductPO extends BasePage {
 
@@ -27,9 +30,9 @@ public class ProductPO extends BasePage {
     @FindBy(xpath = "//*[@id=\"root-app\"]/div/div/section/ol/li[1]/div/div/div[2]/div[3]/div[1]/div[1]/span/div/div/span/span[2]")
     private WebElement getInstallmentsPrice;
 
-    public void openPage(String url) {
-        driver.get(url);
-    }
+    @FindBy(className = "ui-search-item__title")
+    private List<WebElement> productsNames;
+
 
     public void searchProduct(String product) {
         waitForElementToAppear(searchInput);
@@ -49,6 +52,11 @@ public class ProductPO extends BasePage {
     public String getProductInstallmentsQtd() {
         waitForElementToAppear(installmentsQtd);
         return installmentsQtd.getText();
+    }
+
+    public List<WebElement> listOfProducts() {
+        waitForElementToAppear(productName);
+        return productsNames;
     }
 
 }

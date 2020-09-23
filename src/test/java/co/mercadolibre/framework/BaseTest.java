@@ -17,14 +17,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public abstract class BaseTest {
 
     protected static WebDriver driver;
+    static ConfigFileReader configFileReader = new ConfigFileReader();
+
 
     @BeforeClass
     public static void startServer() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        System.out.println("Selenium server started...");
-
+        driver.get(configFileReader.getApplicationUrl());
     }
 
     @AfterClass
@@ -35,7 +36,4 @@ public abstract class BaseTest {
         }
     }
 
-//    public WebDriver getDriver() {
-//        return driver;
-//    }
 }
