@@ -6,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 /**
@@ -23,7 +24,9 @@ public abstract class BaseTest {
     @BeforeClass
     public static void startServer() {
         WebDriverManager.chromedriver().setup();
+
         driver = new ChromeDriver();
+//        driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get(configFileReader.getApplicationUrl());
     }

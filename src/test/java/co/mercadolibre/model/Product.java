@@ -46,8 +46,6 @@ public class Product {
         this.installmentPrice = installmentPrice;
     }
 
-
-
     public String toString() {
         return "Product(name = " + this.getName() + ", price = " + this.getPrice() + ", installments = " + this.getInstallments() +
                 ", installments price = " + this.getInstallmentPrice() + ")";
